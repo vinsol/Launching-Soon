@@ -1,0 +1,48 @@
+= LaunchingSoon
+==== ===================
+
+
+The LaunchingSoon plugin provides a launching soon page with a form that except email from users so that you can update users after you launched the website.
+
+=== Installation
+
+The latest version is available on GitHub (http://github.com/Satish/launching_soon). Install plugin with the following command.
+
+  ruby script/plugin install git://github.com/Satish/launching_soon.git
+
+
+=== Configuration
+
+  Configuration is done via RAILS_ROOT/config/launching_soon_config.yml.
+  The options that you must specify are a css_file_name, html_file_name, csv_file_name
+
+  Example configuration (RAILS_ROOT/config/launching_soon_config.yml)
+
+  launching_soon_configuration:
+    css_file_name: launching_soon.css           # stylesheet for launching soon page (public/stylesheets/launching_soon.css)
+    html_file_name: launching_soon.html.erb     # launching soon page contants (app/views/launching_soon.html.erbs)
+    csv_file_name: data.csv                     # file to store email addresses of the subscribers (public/data.csv)
+
+
+=== Usage
+
+First, include the LaunchingSoon in ApplicationController:
+
+  class ApplicationController < ActionController::Base
+    include LaunchingSoon
+    ...
+  end
+
+Add following routes to your applications routes.rb
+
+  ActionController::Routing::Routes.draw do |map|
+    map.resources :news_letter_subscribers, :only => [:create]
+    ...
+  end
+
+  OR
+
+  ruby script/generate launching_soon_routes
+
+
+Copyright (c) 2009 [satish@vinsol.com], released under the MIT license

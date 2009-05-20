@@ -1,0 +1,11 @@
+* { margin: 0; 	padding: 0; }
+body { font-family:helvetica,arial,clean,sans-serif; font-size: smaller; }
+#messageBox { border:2px solid #08658F; color:#333333; margin:100px auto 0px; padding: 10px; text-align:center; width:50%;}
+#message #errorMessage { color: red; }
+#message #successMessage { color: green; }
+h1, h2 { color: #08658F; }
+h1 { font-size: 3em; padding: .5em 0; }
+p { font-size: 1.2em }
+.newsLetterSubscriberEmail { width:250px; padding:4px;}
+.notifyMeButton { background-color:#666; color:#FFFFFF; padding:3px;}
+.newsLetterSubscriberEmail, .notifyMeButton { border:1px solid #08658F; font-weight:bold; }

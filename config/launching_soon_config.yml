@@ -1,0 +1,4 @@
+launching_soon_configuration:
+  css_file_name: launching_soon.css
+  html_file_name: default.html.erb
+  csv_file_name: data.csv

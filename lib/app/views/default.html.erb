@@ -1,0 +1,11 @@
+<div id="messageBox">
+  <h1>Launching Soon</h1>
+  <p>We are still working on stuff and will let you know when our website launches.</p>
+  <div style = "padding:20px;">
+    <div id = "message"></div>
+    <% form_remote_for :news_letter_subscriber, :url => news_letter_subscribers_path, :loading => "$('progress_indicator').show();" , :success => "$('progress_indicator').hide();" do -%>
+      <%= text_field_tag :email, nil, :class => "newsLetterSubscriberEmail"-%>
+      <%= submit_tag "Notify Me", :class => "notifyMeButton" -%><%= image_tag('launching_soon/spinner.gif', :style => "margin-left:10px; display:none", :id => 'progress_indicator') -%>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,1 @@
+LaunchingSoon::LAUNCHING_SOON_CONFIG = YAML.load_file(File.join(RAILS_ROOT, 'config', 'launching_soon_config.yml'))['launching_soon_configuration']

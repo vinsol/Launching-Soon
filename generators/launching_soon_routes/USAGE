@@ -1,0 +1,11 @@
+Description:
+    This generater will add map.news_letter_subscribers to config/routes.rb
+
+Example:
+    ./script/generate launching_soon_routes
+
+    This will create:
+       ActionController::Routing::Routes.draw do |map|
+         map.news_letter_subscribers
+         ...
+       end
