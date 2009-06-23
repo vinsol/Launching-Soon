@@ -2,7 +2,8 @@
 ==== ===================
 
 
-The LaunchingSoon plugin provides a launching soon page with a form that except email from users so that you can update users after you launched the website.
+Launching soon is a plugin that helps rails projects to manage a dedicated launching soon page before the actual launch date. The plugin also collects email from potential customers. 
+
 
 === Installation
 
@@ -26,21 +27,21 @@ The latest version is available on GitHub (http://github.com/Satish/launching_so
 
 === Usage
 
-First, include the LaunchingSoon in ApplicationController:
+Step 1 : First, include the LaunchingSoon in ApplicationController:
 
   class ApplicationController < ActionController::Base
     include LaunchingSoon
     ...
   end
 
-Add following routes to your applications routes.rb
+Step 2 : Add following routes to your applications routes.rb
 
   ActionController::Routing::Routes.draw do |map|
     map.resources :news_letter_subscribers, :only => [:create]
     ...
   end
 
-  OR
+  OR, alternatively run the following command
 
   ruby script/generate launching_soon_routes
 
