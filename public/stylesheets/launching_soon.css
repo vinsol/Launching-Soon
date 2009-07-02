@@ -1,6 +1,9 @@
 * { margin: 0; 	padding: 0; }
 body { font-family:helvetica,arial,clean,sans-serif; font-size: smaller; }
 #messageBox { border:2px solid #08658F; color:#333333; margin:100px auto 0px; padding: 10px; text-align:center; width:50%;}
+#message #errorMessage, #message #successMessage { margin:2px auto; padding-bottom:10px; text-align:left; width:58%; }
+#message ol { list-style:square }
+#message ol li { list-style-position:inside; }
 #message #errorMessage { color: red; }
 #message #successMessage { color: green; }
 h1, h2 { color: #08658F; }

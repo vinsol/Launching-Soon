@@ -1,4 +1,6 @@
 launching_soon_configuration:
+  campaign_monitor_api_key:
+  campaign_monitor_list_id:
   css_file_name: launching_soon.css
   html_file_name: default.html.erb
   csv_file_name: data.csv

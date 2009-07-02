@@ -1,0 +1,88 @@
+h1. LaunchingSoon
+
+Launching soon is a plugin that helps rails projects to manage a dedicated launching soon page before the actual launch date. The plugin also collects email from potential customers.
+
+Options available to store subscriber's email addresses are:
+
+  1. CSV file (public/data.csv).
+  2. Campaign Monitor ("www.campaignmonitor.com":http://www.campaignmonitor.com).
+
+h2. Pre-requisites
+
+If you want to use Campaign Monitor as a store for subscriber's email address you need an account with Campaign Monitor and the API Key ("http://signup.createsend.com/signup.aspx":http://signup.createsend.com/signup.aspx).
+
+h2. Dependencies
+
+This plugin requires the following gems:
+
+gnumarcelo-campaigning
+<pre><code>sudo gem install gnumarcelo-campaigning -s http://gems.github.com</code></pre>
+
+dependencies for gnumarcelo-campaigning: Soap4r
+
+<pre><code>sudo gem install soap4r</code></pre>
+
+h2. Installation
+
+The latest version is available on GitHub. There are a few options for installing LaunchingSoon.
+
+Install as a Rails plugin:
+
+<pre><code>script/plugin install git://github.com/Satish/launching_soon.git</code></pre>
+
+Clone from the Github repository:
+
+<pre><code>git clone git://github.com/Satish/launching_soon.git</code></pre>
+
+h2. Configuration
+
+Configuration is done via @RAILS_ROOT/config/launching_soon_config.yml@.
+
+The options that you must specify are:
+
+  1. css_file_name
+  2. html_file_name
+  3. campaign_monitor_api_key and campaign_monitor_list_id
+     OR
+     csv_file_name
+
+Preference will be given to campaign monitor
+
+Example configuration (RAILS_ROOT/config/launching_soon_config.yml)
+<code><pre>
+launching_soon_configuration:
+  campaign_monitor_api_key : _put_here_your_api_key_  # CAMPAIGN_MONITOR_API_KEY
+  campaign_monitor_list_id : _put_here_your_list_id_  # CAMPAIGN_MONITOR_LIST_ID
+  css_file_name            : launching_soon.css       # stylesheet for launching soon page (public/stylesheets/launching_soon.css)
+  html_file_name           : launching_soon.html.erb  # launching soon page contants (app/views/launching_soon.html.erb)
+  csv_file_name            : data.csv                 # file to store email addresses of the subscribers (public/data.csv)
+</code></pre>
+
+h2. Usage
+
+Step 1 : Include the LaunchingSoon in ApplicationController:
+<code><pre>
+class ApplicationController < ActionController::Base
+  include LaunchingSoon
+  ...
+end
+</code></pre>
+
+Step 2 : Add following routes to your applications routes.rb
+<pre><code>
+ActionController::Routing::Routes.draw do |map|
+  map.resources :news_letter_subscribers, :only => [:create]
+	...
+end
+
+OR, alternatively run the following command
+
+ruby script/generate launching_soon_routes
+</code></pre>
+
+h2. TODO
+
+1. Integration with "Mailchimp":http://www.mailchimp.com/
+
+
+Copyright (c) 2009 [satish@vinsol.com], released under the MIT license

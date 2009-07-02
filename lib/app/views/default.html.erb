@@ -4,7 +4,7 @@
   <div style = "padding:20px;">
     <div id = "message"></div>
     <% form_remote_for :news_letter_subscriber, :url => news_letter_subscribers_path, :loading => "$('progress_indicator').show();" , :success => "$('progress_indicator').hide();" do -%>
-      <%= text_field_tag :email, nil, :class => "newsLetterSubscriberEmail"-%>
+      <%= text_field_tag :email, 'Email Address', :class => "newsLetterSubscriberEmail", :onfocus => "if(this.value == 'Email Address'){ this.value = ''}", :onblur => "if(this.value == ''){ this.value = 'Email Address'}" -%>
       <%= submit_tag "Notify Me", :class => "notifyMeButton" -%><%= image_tag('launching_soon/spinner.gif', :style => "margin-left:10px; display:none", :id => 'progress_indicator') -%>
     <% end %>
   </div>

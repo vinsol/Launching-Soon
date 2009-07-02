@@ -9,7 +9,7 @@ class NewsLetterSubscribersController < ActionController::Base
       format.html { render :nothing => true }
       format.js do
         render :update do |page|
-          page.replace_html "message", @nls.valid? ? "<div id='successMessage'>Subscribed successfully</div>" : "<div id='errorMessage'>Invalid Email</div>"
+          page.replace_html "message", @nls.save ? render_success_message : render_error_message
         end
       end
     end
