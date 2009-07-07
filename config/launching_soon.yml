@@ -1,0 +1,29 @@
+development:
+  css_file_name: launching_soon.css
+  html_file_name: default.html.erb
+  option_to_store_email: csv
+  campaign_monitor_api_key:
+  campaign_monitor_list_id:
+  mail_chimp_api_key:
+  mail_chimp_list_id:
+  csv_file_name: data.csv
+
+test:
+  css_file_name: launching_soon.css
+  html_file_name: default.html.erb
+  option_to_store_email: csv
+  campaign_monitor_api_key:
+  campaign_monitor_list_id:
+  mail_chimp_api_key:
+  mail_chimp_list_id:
+  csv_file_name: data.csv
+
+production:
+  css_file_name: launching_soon.css
+  html_file_name: default.html.erb
+  option_to_store_email: csv
+  campaign_monitor_api_key:
+  campaign_monitor_list_id:
+  mail_chimp_api_key:
+  mail_chimp_list_id:
+  csv_file_name: data.csv

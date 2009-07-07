@@ -10,6 +10,7 @@ rescue LoadError
   require 'action_controller/test_process'
   require 'active_support'
 end
+#RAILS_ENV = 'test'
 require File.join(File.dirname(__FILE__), '../lib/launching_soon')
 RAILS_ROOT = File.join(File.dirname(__FILE__), '..') unless defined? RAILS_ROOT
 require File.join(File.dirname(__FILE__), '../init')

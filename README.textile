@@ -6,14 +6,18 @@ Options available to store subscriber's email addresses are:
 
   1. CSV file (public/data.csv).
   2. Campaign Monitor ("www.campaignmonitor.com":http://www.campaignmonitor.com).
+  3. Mail Chimp ("www.mailchimp.com":http://www.mailchimp.com).
 
 h2. Pre-requisites
 
-If you want to use Campaign Monitor as a store for subscriber's email address you need an account with Campaign Monitor and the API Key ("http://signup.createsend.com/signup.aspx":http://signup.createsend.com/signup.aspx).
+You need an account (API Key and List ID) with:
+
+  * Campaign Monitor If you want to use Campaign Monitor as a store for subscriber's email address ("http://www.signup.createsend.com/signup":http://www.signup.createsend.com/signup).
+  * MailChimp  If you want to use MailChimp as a store for subscriber's email address ("http://www.mailchimp.com/signup/":http://www.mailchimp.com/signup/).
 
 h2. Dependencies
 
-This plugin requires the following gems:
+If you are using Campaign Monitor this plugin requires the following gems:
 
 gnumarcelo-campaigning
 <pre><code>sudo gem install gnumarcelo-campaigning -s http://gems.github.com</code></pre>
@@ -36,25 +40,28 @@ Clone from the Github repository:
 
 h2. Configuration
 
-Configuration is done via @RAILS_ROOT/config/launching_soon_config.yml@.
+Configuration is done via @RAILS_ROOT/config/launching_soon.yml@.
 
 The options that you must specify are:
 
   1. css_file_name
   2. html_file_name
-  3. campaign_monitor_api_key and campaign_monitor_list_id
+  3. option_to_store_email (default: csv)
+  4. campaign_monitor_api_key and campaign_monitor_list_id
+     OR
+     mail_chimp_api_key and mail_chimp_list_id
      OR
      csv_file_name
 
-Preference will be given to campaign monitor
-
-Example configuration (RAILS_ROOT/config/launching_soon_config.yml)
+Example configuration (RAILS_ROOT/config/launching_soon.yml)
 <code><pre>
-launching_soon_configuration:
+  html_file_name           : launching_soon.html.erb  # launching soon page contants (app/views/launching_soon.html.erb)
+  css_file_name            : launching_soon.css       # stylesheet for launching soon page (public/stylesheets/launching_soon.css)
+  option_to_store_email    : csv                      # option are : csv | campaign_monitor | mail_chimp
   campaign_monitor_api_key : _put_here_your_api_key_  # CAMPAIGN_MONITOR_API_KEY
   campaign_monitor_list_id : _put_here_your_list_id_  # CAMPAIGN_MONITOR_LIST_ID
-  css_file_name            : launching_soon.css       # stylesheet for launching soon page (public/stylesheets/launching_soon.css)
-  html_file_name           : launching_soon.html.erb  # launching soon page contants (app/views/launching_soon.html.erb)
+  mail_chimp_api_key       : _put_here_your_api_key_  # MAIL_CHIMP_API_KEY
+  mail_chimp_list_id       : _put_here_your_list_id_  # MAIL_CHIMP_LIST_ID
   csv_file_name            : data.csv                 # file to store email addresses of the subscribers (public/data.csv)
 </code></pre>
 
@@ -83,11 +90,8 @@ ruby script/generate launching_soon_routes
 h2. Issue Tracker
 
 Please submit any bugs or annoyances on the lighthouse tracker at
+
 "https://vinsol.lighthouseapp.com/projects/31867-launching-soon/overview":https://vinsol.lighthouseapp.com/projects/31867-launching-soon/overview
-
-h2. TODO
-
-1. Integration with "Mailchimp":http://www.mailchimp.com/
 
 
 Copyright (c) 2009 [satish@vinsol.com], released under the MIT license
