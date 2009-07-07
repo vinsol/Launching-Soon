@@ -79,4 +79,11 @@ Step 2 : Add following routes to your applications routes.rb
   ruby script/generate launching_soon_routes
 
 
+=== Issue Tracker
+
+Please submit any bugs or annoyances on the lighthouse tracker at
+
+https://vinsol.lighthouseapp.com/projects/31867-launching-soon/overview
+
+
 Copyright (c) 2009 [satish@vinsol.com], released under the MIT license
