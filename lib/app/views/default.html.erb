@@ -4,7 +4,7 @@
     <div class="notifyForm">
       <h3>Notifier</h3>
       <% form_remote_for :news_letter_subscriber, :url => news_letter_subscribers_path, :loading => "$('progress_indicator').show();" , :success => "$('progress_indicator').hide();" do -%>
-        <%= text_field_tag :email, nil, :class => "subscriberEmail" -%>
+        <%= text_field_tag :email, 'Enter your email here', :class => "subscriberEmail", :onfocus => "if(this.value == 'Enter your email here'){ this.value = '' }", :onblur => "if(this.value == ''){ this.value = 'Enter your email here' }" -%>
         <%= submit_tag "", :class => "notifyMeButton" -%><%= image_tag('launching_soon/spinner.gif', :style => "margin-left:10px; display:none", :id => 'progress_indicator') -%>
       <% end %>
       <span>* We never spam</span>
@@ -24,8 +24,14 @@
   <div class="lauchTime">
     <p>
       <label>Launching In:</label>
-       400 days 10 hours 50 minutes and 10 seconds
+      <span id="cdcontainer"></span>
     </p>
-  </div>  
-  <p class="note">* Edit the files in “ app > views” folder to make your changes.</p>
+    <script type="text/javascript">
+      //cdLocalTime("ID_of_DIV_container", "server_mode", LocaltimeoffsetMinutes, "target_date", "opt_debug_mode")
+      //Note: "launchdate" should be an arbitrary but unique variable for each instance of a countdown on your page:
+      var launchdate=new cdLocalTime("cdcontainer", "", 0, "<%= @launching_date -%>")
+      launchdate.displaycountdown("days", formatresults2)
+    </script>
+  </div>
+  <p class="note">* Edit the files in “app > views > launching_soon” folder to make your changes.</p>
 </div>

@@ -7,6 +7,7 @@ development:
   mail_chimp_api_key:
   mail_chimp_list_id:
   csv_file_name: data.csv
+  launching_date: July 9, 2020 00:00:00
 
 test:
   css_file_name: launching_soon.css
@@ -17,6 +18,7 @@ test:
   mail_chimp_api_key:
   mail_chimp_list_id:
   csv_file_name: data.csv
+  launching_date: July 9, 2020 00:00:00
 
 production:
   css_file_name: launching_soon.css
@@ -27,3 +29,4 @@ production:
   mail_chimp_api_key:
   mail_chimp_list_id:
   csv_file_name: data.csv
+  launching_date: July 9, 2020 00:00:00

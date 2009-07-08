@@ -5,179 +5,34 @@ author: Bhavesh Dhupar
 email: bhavesh@vinsol.com
 –––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––––*/
 
-
-/*––––––––––––––––––––Global Css–––––––––––––––––––––––––––––––––––-*/
-
-* {
-  margin : 0;
-  padding : 0;
-}
-
-body {
-  color: #eee;
-  font-size: 62.5%;
-  font-family: Arial, Verdana;
-  background: url(/images/bkgImg.jpg) repeat left top;
-}
-
-.clear {
-  overflow: hidden;
-}
-
-h3 {
-  color: #fff;
-  font-size: 2.2em;
-}
-
-.container {
-  width: 100%;
-}
-
-.header {
-  width: 100%;
-  height: 202px;
-  background: url(/images/headerBkgImg.jpg) repeat left top; 
-}
-
-.logo {
-  width: 1022px;
-  margin: 0 auto;
-  position: relative;
-}
-
-.logo h1 {
-  top: 68px;
-  left: 27%;
-  width: 447px;
-  height: 190px;
-  position: absolute;
-  text-indent: -999em;
-  background: url(/images/logo.jpg) no-repeat left top;
-}
-
-.tagline {
-  color: #fff;
-  width: 723px;
-  font-size: 2.2em;
-  margin: 85px auto 50px;
-  font-style: italic;
-  font-family: georgia;
-}
-
-#messageBox { 
-  width: 723px;
-  margin: 0 auto; 
-  padding: 20px 0 0;
-  background: url(/images/divider.jpg) repeat-x left top;
-}
-
-.notifyForm {
-  float: left;
-  width: 300px;
-  padding-right: 15px;
-}
-
-.notifyForm .subscriberEmail {
-  color: #555;
-  border: none;
-  width: 299px;
-  margin: 10px 0;
-  font-size: 1.6em;
-  font-weight: bold;
-  padding: 11px 0 9px 5px;
-  background: url(/images/inputImg.jpg) no-repeat left top;
-}
-
-.notifyMeButton {
-  border: none;
-  width: 151px;
-  height: 40px;
-  background: url(/images/bttnImg.jpg) no-repeat left top;
-}
-
-.notifyForm span {
-  display: block;
-  margin: 10px 0 0;
-  font-size: 1.4em;
-  font-style: italic;
-  font-family: georgia;
-}
-
-.aboutBlk {
-  float: right;
-  width: 300px;
-  padding-left: 15px;
-}
-
-.aboutBlk p {
-  padding: 10px 0;
-  font-size: 1.4em;
-  line-height: 22px;
-}
-
-.aboutBlk p a {
-  color: #fffdc0;
-  text-decoration: none;  
-}
-
-.aboutBlk div {
-  height: 29px;
-  padding-left: 33px;
-  background: url(/images/twitterIcon.png) no-repeat left center;
-}
-
-.aboutBlk div a {
-  color: #fff;
-  font-size: 1.2em;
-  font-style: italic;
-  font-family: georgia;
-  text-decoration: underline;
-}
-
-#messageBox .clear {
-  padding-bottom: 20px;
-  background: url(/images/divider.jpg) repeat-x left bottom;
-}
-
-.lauchTime {
-  width: 100%;
-  margin: 30px 0 40px;
-}
-
-.lauchTime p {
-  font-size: 1.9em;
-  text-align: center;
-  font-family: georgia;
-}
-
-.lauchTime p label {
-  font-size: 1.2em;
-  font-weight: bold;
-  font-family: Arial;
-}
+* { margin : 0; padding : 0;}
+body { color: #eee; font-size: 62.5%; font-family: Arial, Verdana; background: url(/images/launching_soon/bkgImg.jpg) repeat left top; }
+.clear { overflow: hidden; }
+h3 { color: #fff; font-size: 2.2em; }
+.container { width: 100%; }
+.header { width: 100%; height: 202px; background: url(/images/launching_soon/headerBkgImg.jpg) repeat left top; }
+.logo { width: 1022px; margin: 0 auto; position: relative; }
+.logo h1 { top: 68px; left: 27%; width: 447px; height: 190px; position: absolute; text-indent: -999em; background: url(/images/launching_soon/logo.jpg) no-repeat left top; }
+.tagline { color: #fff; width: 723px; font-size: 2.2em; margin: 85px auto 50px; font-style: italic; font-family: georgia; }
+#messageBox { width: 723px; margin: 0 auto; padding: 20px 0 0; background: url(/images/launching_soon/divider.jpg) repeat-x left top; }
+#messageBox .clear { padding-bottom: 20px; background: url(/images/launching_soon/divider.jpg) repeat-x left bottom; }
+.notifyForm { float: left; width: 300px; padding-right: 15px; }
+.notifyForm .subscriberEmail { color: #555; border: none; width: 299px; margin: 10px 0; font-size: 1.6em; font-weight: bold; padding: 11px 0 10px 5px; background: url(/images/launching_soon/inputImg.jpg) no-repeat left top; }
+.notifyMeButton { border: none; width: 151px; height: 40px; background: url(/images/launching_soon/bttnImg.jpg) no-repeat left top; }
+.notifyForm span { display: block; margin: 10px 0 0; font-size: 1.4em; font-style: italic; font-family: georgia; }
+.aboutBlk { float: right; width: 300px; padding-left: 15px; }
+.aboutBlk p { padding: 10px 0; font-size: 1.4em; line-height: 22px; }
+.aboutBlk p a, #footer span a  { color: #fffdc0; text-decoration: none; }
+.aboutBlk div { height: 29px; padding-left: 33px; background: url(/images/launching_soon/twitterIcon.png) no-repeat left center; }
+.aboutBlk div a { color: #fff; font-size: 1.2em; font-style: italic; font-family: georgia; text-decoration: underline; }
+.lauchTime { width: 100%; margin: 30px 0 40px; }
+.lauchTime p { font-size: 1.9em; text-align: center; font-family: georgia; }
+.lauchTime p label { font-size: 1.2em; font-weight: bold; font-family: Arial; }
+.note { font-size: 1.4em; font-style: italic; margin-bottom: 20px; font-family: georgia; }
+#errorMessage, #successMessage { width: 290px; color: #D63430; font-size: 1.4em; margin: 10px 0 15px; font-family: georgia; border: 1px dotted #A34041; padding: 10px 10px 10px 40px; background: url(/images/launching_soon/error.png) no-repeat 5px center; }
+#successMessage { color: #339124; border: 1px dotted #336d32; background: url(/images/launching_soon/success.png) no-repeat 5px center; }
+#footer { width: 723px; margin:30px auto 0px; font-size: 14px; text-align: center; border-top:1px solid #333; padding:15px 0 20px;}
 
 
-
-.note {
-  font-size: 1.4em;
-  font-style: italic;
-  margin-bottom: 20px;
-  font-family: georgia;
-}
-
-#errorMessage, #successMessage {
-  width: 290px;
-  color: #D63430;
-  font-size: 1.4em;
-  margin: 10px 0 15px;
-  font-family: georgia;
-  border: 1px dotted #A34041;  
-  padding: 10px 10px 10px 40px;
-  background: url(/images/error.png) no-repeat 5px center;
-}
-
-#successMessage {
-  color: #339124;
-  border: 1px dotted #336d32; 
-  background: url(/images/success.png) no-repeat 5px center;
-}
+/*Example CSS to create LCD countdown look*/
+.lcdstyle{ font-weight: bold; padding-left: 10px; color:#FFFDC0; }
