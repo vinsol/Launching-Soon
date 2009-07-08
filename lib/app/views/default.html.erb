@@ -1,11 +1,31 @@
 <div id="messageBox">
-  <h1>Launching Soon</h1>
-  <p>We are still working on stuff and will let you know when our website launches.</p>
-  <div style = "padding:20px;">
-    <div id = "message"></div>
-    <% form_remote_for :news_letter_subscriber, :url => news_letter_subscribers_path, :loading => "$('progress_indicator').show();" , :success => "$('progress_indicator').hide();" do -%>
-      <%= text_field_tag :email, 'Email Address', :class => "newsLetterSubscriberEmail", :onfocus => "if(this.value == 'Email Address'){ this.value = ''}", :onblur => "if(this.value == ''){ this.value = 'Email Address'}" -%>
-      <%= submit_tag "Notify Me", :class => "notifyMeButton" -%><%= image_tag('launching_soon/spinner.gif', :style => "margin-left:10px; display:none", :id => 'progress_indicator') -%>
-    <% end %>
+  <div id = "message"></div>
+  <div class="clear">
+    <div class="notifyForm">
+      <h3>Notifier</h3>
+      <% form_remote_for :news_letter_subscriber, :url => news_letter_subscribers_path, :loading => "$('progress_indicator').show();" , :success => "$('progress_indicator').hide();" do -%>
+        <%= text_field_tag :email, nil, :class => "subscriberEmail" -%>
+        <%= submit_tag "", :class => "notifyMeButton" -%><%= image_tag('launching_soon/spinner.gif', :style => "margin-left:10px; display:none", :id => 'progress_indicator') -%>
+      <% end %>
+      <span>* We never spam</span>
+    </div>  
+    <div class="aboutBlk">
+      <h3>About Us</h3>
+      <p>
+        Launching soon is a simple rails plugin that helps rails projects to
+        manage  a dedicated launching soon page before the actual launch date.
+        The plugin also collects email from potential customers. This is
+        developed by <a href="http://vinsol.com/index.php">Vinsol</a>, India as part of their small
+        contribution to the awesome rails community.
+      </p>
+      <div><a href="http://twitter.com/the_vinsol">Follow us on twitter</a></div>
+    </div>  
   </div>
+  <div class="lauchTime">
+    <p>
+      <label>Launching In:</label>
+       400 days 10 hours 50 minutes and 10 seconds
+    </p>
+  </div>  
+  <p class="note">* Edit the files in “ app > views” folder to make your changes.</p>
 </div>

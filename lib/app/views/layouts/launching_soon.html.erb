@@ -7,6 +7,12 @@
     <%= stylesheet_link_tag @css_file %>
   </head>
   <body>
-    <%= yield -%>
+    <div class="container">
+      <div class="header">
+        <div class="logo"><h1>Launching Soon</h1></div>
+      </div>  
+      <h2 class="tagline">Every Web site needs a launching page, have yours in minutes</h2>
+      <%= yield -%>
+    </div>
   </body>
 </html>
