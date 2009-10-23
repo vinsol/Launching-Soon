@@ -26,12 +26,7 @@
       <label>Launching In:</label>
       <span id="cdcontainer"></span>
     </p>
-    <script type="text/javascript">
-      //cdLocalTime("ID_of_DIV_container", "server_mode", LocaltimeoffsetMinutes, "target_date", "opt_debug_mode")
-      //Note: "launchdate" should be an arbitrary but unique variable for each instance of a countdown on your page:
-      var launchdate=new cdLocalTime("cdcontainer", "", 0, "<%= @launching_date -%>")
-      launchdate.displaycountdown("days", formatresults2)
-    </script>
+    <%= javascript_tag("countdown('cdcontainer', #{ @launching_date.year }, #{ @launching_date.month }, #{ @launching_date.day }, #{ @launching_date.hour }, #{ @launching_date.min }, #{ @launching_date.sec });") %>
   </div>
   <p class="note">* Edit the files in “app > views > launching_soon” folder to make your changes.</p>
 </div>

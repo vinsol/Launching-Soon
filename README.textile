@@ -54,7 +54,7 @@ The options that you must specify are:
      csv_file_name
 
 Example configuration (RAILS_ROOT/config/launching_soon.yml)
-<code><pre>
+<pre><code>
   html_file_name           : launching_soon.html.erb  # launching soon page contants (app/views/launching_soon.html.erb)
   css_file_name            : launching_soon.css       # stylesheet for launching soon page (public/stylesheets/launching_soon.css)
   option_to_store_email    : csv                      # option are : csv | campaign_monitor | mail_chimp
@@ -68,7 +68,7 @@ Example configuration (RAILS_ROOT/config/launching_soon.yml)
 h2. Usage
 
 Step 1 : Include the LaunchingSoon in ApplicationController:
-<code><pre>
+<pre><code>
 class ApplicationController < ActionController::Base
   include LaunchingSoon
   ...

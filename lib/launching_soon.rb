@@ -51,7 +51,7 @@ module LaunchingSoon
   # with a css file from public/stylesheets/LAUNCHING_SOON_CONFIG[:css_file_name] path (eg. public/stylesheets/launching_soon.css).
   def setup_launching_soon_page
     @css_file = LAUNCHING_SOON_CONFIG[:css_file_name]
-    @launching_date = LAUNCHING_SOON_CONFIG[:launching_date]
+    @launching_date = Time.zone.parse(LAUNCHING_SOON_CONFIG[:launching_date]).utc
     render :template => File.join('launching_soon', LAUNCHING_SOON_CONFIG[:html_file_name]), :layout => "launching_soon"
   end
   
