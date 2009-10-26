@@ -8,6 +8,7 @@ Options available to store subscriber's email addresses are:
   1. CSV file (public/data.csv).
   2. Campaign Monitor (www.campaignmonitor.com).
   3. Mail Chimp (www.mailchimp.com).
+  4. Database.
 
 === Pre-requisites
 
@@ -59,7 +60,7 @@ Example configuration (RAILS_ROOT/config/launching_soon.yml)
 
   html_file_name           : launching_soon.html.erb  # launching soon page contants (app/views/launching_soon.html.erb)
   css_file_name            : launching_soon.css       # stylesheet for launching soon page (public/stylesheets/launching_soon.css)
-  option_to_store_email    : csv                      # option are : csv | campaign_monitor | mail_chimp
+  option_to_store_email    : csv                      # option are : csv | campaign_monitor | mail_chimp | db
   campaign_monitor_api_key : _put_here_your_api_key_  # CAMPAIGN_MONITOR_API_KEY
   campaign_monitor_list_id : _put_here_your_list_id_  # CAMPAIGN_MONITOR_LIST_ID
   mail_chimp_api_key       : _put_here_your_api_key_  # MAIL_CHIMP_API_KEY
@@ -72,7 +73,7 @@ Example configuration (RAILS_ROOT/config/launching_soon.yml)
 Step 1 : First, include the LaunchingSoon in ApplicationController:
 
   class ApplicationController < ActionController::Base
-    include LaunchingSoon
+    include LaunchingSoon # if Rails.env.development?
     ...
   end
 
@@ -87,6 +88,25 @@ Step 2 : Add following routes to your applications routes.rb
 
   ruby script/generate launching_soon_routes
 
+Step 3 : Generate migration to add news_letter_subscribers table
+
+class CreateNewsLetterSubscribers < ActiveRecord::Migration
+  def self.up
+    create_table :news_letter_subscribers do |t|
+      t.string :email
+      t.timestamps
+    end
+    add_index :news_letter_subscribers, :email
+  end
+
+  def self.down
+    drop_table :news_letter_subscribers
+  end
+end
+
+  OR, alternatively run the following command
+
+  rake db:migrate:launching_soon
 
 === Issue Tracker
 

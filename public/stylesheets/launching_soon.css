@@ -29,7 +29,7 @@ h3 { color: #fff; font-size: 2.2em; }
 .lauchTime p { font-size: 1.9em; text-align: center; font-family: georgia; }
 .lauchTime p label { font-size: 1.2em; font-weight: bold; font-family: Arial; }
 .note { font-size: 1.4em; font-style: italic; margin-bottom: 20px; font-family: georgia; }
-#errorMessage, #successMessage { width: 290px; color: #D63430; font-size: 1.4em; margin: 10px 0 15px; font-family: georgia; border: 1px dotted #A34041; padding: 10px 10px 10px 40px; background: url(/images/launching_soon/error.png) no-repeat 5px center; }
+#errorMessage, #successMessage { width: 290px; color: #D63430; font-size: 1.4em; margin: 10px 0 15px; font-family: georgia; border: 1px dotted #A34041; padding: 10px 10px 10px 60px; background: url(/images/launching_soon/error.png) no-repeat 5px center; }
 #successMessage { color: #339124; border: 1px dotted #336d32; background: url(/images/launching_soon/success.png) no-repeat 5px center; }
 #footer { width: 723px; margin:30px auto 0px; font-size: 14px; text-align: center; border-top:1px solid #333; padding:15px 0 20px;}
 

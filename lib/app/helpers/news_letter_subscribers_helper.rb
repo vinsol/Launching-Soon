@@ -9,7 +9,7 @@ module NewsLetterSubscribersHelper
   def render_error_message
     html = "<div id='errorMessage'>"
     html << '<ol>'
-    @nls.errors.each do |error|
+    @nls.errors.full_messages.each do |error|
       html << "<li>"
       html << h(error)
       html << "</li>"

@@ -4,9 +4,11 @@ Launching soon is a plugin that helps rails projects to manage a dedicated launc
 
 Options available to store subscriber's email addresses are:
 
-  1. CSV file (public/data.csv).
-  2. Campaign Monitor ("www.campaignmonitor.com":http://www.campaignmonitor.com).
-  3. Mail Chimp ("www.mailchimp.com":http://www.mailchimp.com).
+  # CSV file (public/data.csv).
+  # Campaign Monitor ("www.campaignmonitor.com":http://www.campaignmonitor.com).
+  # Mail Chimp ("www.mailchimp.com":http://www.mailchimp.com).
+  # Database.
+
 
 h2. Pre-requisites
 
@@ -44,20 +46,20 @@ Configuration is done via @RAILS_ROOT/config/launching_soon.yml@.
 
 The options that you must specify are:
 
-  1. css_file_name
-  2. html_file_name
-  3. option_to_store_email (default: csv)
-  4. campaign_monitor_api_key and campaign_monitor_list_id
+  # css_file_name
+  # html_file_name
+  # option_to_store_email (default: csv)
+  # campaign_monitor_api_key and campaign_monitor_list_id
      OR
      mail_chimp_api_key and mail_chimp_list_id
      OR
      csv_file_name
-
+</pre>
 Example configuration (RAILS_ROOT/config/launching_soon.yml)
 <pre><code>
   html_file_name           : launching_soon.html.erb  # launching soon page contants (app/views/launching_soon.html.erb)
   css_file_name            : launching_soon.css       # stylesheet for launching soon page (public/stylesheets/launching_soon.css)
-  option_to_store_email    : csv                      # option are : csv | campaign_monitor | mail_chimp
+  option_to_store_email    : csv                      # option are : csv | campaign_monitor | mail_chimp | db
   campaign_monitor_api_key : _put_here_your_api_key_  # CAMPAIGN_MONITOR_API_KEY
   campaign_monitor_list_id : _put_here_your_list_id_  # CAMPAIGN_MONITOR_LIST_ID
   mail_chimp_api_key       : _put_here_your_api_key_  # MAIL_CHIMP_API_KEY
@@ -70,7 +72,7 @@ h2. Usage
 Step 1 : Include the LaunchingSoon in ApplicationController:
 <pre><code>
 class ApplicationController < ActionController::Base
-  include LaunchingSoon
+  include LaunchingSoon # if Rails.env.development?
   ...
 end
 </code></pre>
@@ -85,6 +87,27 @@ end
 OR, alternatively run the following command
 
 ruby script/generate launching_soon_routes
+</code></pre>
+
+Step 3 : Generate migration to add news_letter_subscribers table
+<pre><code>
+class CreateNewsLetterSubscribers < ActiveRecord::Migration
+  def self.up
+    create_table :news_letter_subscribers do |t|
+      t.string :email
+      t.timestamps
+    end
+    add_index :news_letter_subscribers, :email
+  end
+
+  def self.down
+    drop_table :news_letter_subscribers
+  end
+end
+
+OR, alternatively run the following command
+
+rake db:migrate:launching_soon
 </code></pre>
 
 h2. Issue Tracker

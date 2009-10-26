@@ -1,30 +1,19 @@
-class NewsLetterSubscriber
+class LaunchingSoon::NewsLetterSubscriber < ActiveRecord::Base
   
-  attr_accessor :email, :errors, :name
+  validates_presence_of :email
+  validates_uniqueness_of :email, :if => :store_to_db
+  validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/
+  attr_accessor_with_default :store_to_db, false
 
-  def initialize(attributes = nil)
-    if Hash === attributes
-      attributes.each do |key, value|
-        self.send(key.to_s + "=", value)
-      end
-    end
-    @errors = []
-    load_monkey_brains
-  end
+  alias :original_save :save
   
-  # validate email address
   def valid?
-    self.errors.clear
-    if email.blank?
-      self.errors << "Email address can't be blank"
-    elsif !(email  =~ /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/)
-      self.errors << "Invalid email address"
-    end
-    remove_duplicate_errors
-    return errors.empty?
+    load_monkey_brains
+    self.store_to_db = (@option_to_store_email == 'db')
+    super
   end
 
-  # save email address to CSV/CampaignMonitor/MailChimp
+  # save email address to CSV/CampaignMonitor/MailChimp/db
   def save
     valid? ? write_email_address : false
   end
@@ -34,10 +23,13 @@ class NewsLetterSubscriber
 
   # actual stuff to writes email addresses to subscribers list (CSV/CampaignMonitor/MailChimp)
   def write_email_address
-    if option_to_store_email?('campaign_monitor') # @campaign_monitor_api_key && @campaign_monitor_list_id
-      write_email_to_campaign_monitor
-    elsif option_to_store_email?('mail_chimp') # @mail_chimp_api_key && @cmail_chimp_list_id
-      write_email_to_mail_chimp
+    case @option_to_store_email
+    when 'campaign_monitor'
+      write_email_to_campaign_monitor  # @campaign_monitor_api_key && @campaign_monitor_list_id
+    when 'mail_chimp'
+      write_email_to_mail_chimp # @mail_chimp_api_key && @cmail_chimp_list_id
+    when 'db' #
+      write_email_to_database
     else
       write_email_to_csv_file
     end
@@ -54,21 +46,25 @@ class NewsLetterSubscriber
         self.errors << result.message
       end
     rescue Exception => e
-      self.errors << e.message
+      self.errors.add_to_base(e.message + " (Campaign Monitor)")
     end
-    remove_duplicate_errors
   end
 
   # writes email addresses to MailChimp subscribers list
   def write_email_to_mail_chimp
     require 'xmlrpc/client'
     chimpApi ||= XMLRPC::Client.new2("http://api.mailchimp.com/1.2/")
+
     begin
       chimpApi.call("listSubscribe", @mail_chimp_api_key, @mail_chimp_list_id, email, {}, 'html', false, true, true)
     rescue Exception => e
-      self.errors << e.message
+      self.errors.add_to_base(e.message + " (MailChimp)")
     end
-    remove_duplicate_errors
+  end
+
+  # writes email addresses to database
+  def write_email_to_database
+    self.original_save
   end
 
   # writes email addresses to CSV file
@@ -79,18 +75,8 @@ class NewsLetterSubscriber
       file << "#{ email }\n"
       file.close
     rescue Exception => e
-      self.errors << e.message
+      self.errors.add_to_base(e.message + " (CSV)")
     end
-  end
-
-  # delete duplicate entries from errors
-  def remove_duplicate_errors
-    self.errors.flatten!
-    self.errors.uniq!
-  end
-
-  def option_to_store_email?(option = 'csv')
-    @option_to_store_email == option
   end
 
   def load_monkey_brains
