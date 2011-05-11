@@ -2,6 +2,8 @@ h1. LaunchingSoon
 
 Launching soon is a plugin that helps rails projects to manage a dedicated launching soon page before the actual launch date. The plugin also collects email from potential customers.
 
+"Click Here":http://launching-soon.heroku.com/ to see live Demo. You can download Demo application from "https://github.com/Satish/Launching-Soon-Demo":https://github.com/Satish/Launching-Soon-Demo
+
 Options available to store subscriber's email addresses are:
 
   # CSV file (public/data.csv).
